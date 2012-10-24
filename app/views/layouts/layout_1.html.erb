@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webtopia</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<h1>This is layout 1</a>
+
+<%= yield %>
+<br/><br/>
+Also
+<br/><br/>
+<%= @content1.html_safe %>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<%= form_for(@page) do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :section1 %><br />
+    <%= f.text_field :section1 %>
+  </div>
+  <div class="field">
+    <%= f.label :section2 %><br />
+    <%= f.text_field :section2 %>
+  </div>
+  <div class="field">
+    <%= f.label :section3 %><br />
+    <%= f.text_field :section3 %>
+  </div>
+  <div class="field">
+    <%= f.label :section4 %><br />
+    <%= f.text_field :section4 %>
+  </div>
+  <div class="field">
+    <%= f.label :page_name %><br />
+    <%= f.text_field :page_name %>
+  </div>
+  <div class="field">
+    <%= f.label :page_layout %><br />
+    <%= f.text_field :page_layout %>
+  </div>
+  <div class="field">
+    <%= f.label :col_layout %><br />
+    <%= f.text_field :col_layout %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :header_special %><br />
+    <%= f.text_field :header_special %>
+  </div>
+  <div class="field">
+    <%= f.label :col1_1 %><br />
+    <%= f.text_field :col1_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :col1_2 %><br />
+    <%= f.text_field :col1_2%>
+  </div>
+  <div class="field">
+    <%= f.label :col1_3 %><br />
+    <%= f.text_field :col1_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :col1_4 %><br />
+    <%= f.text_field :col1_4 %>
+  </div>
+    <div class="field">
+    <%= f.label :col2_1 %><br />
+    <%= f.text_field :col2_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :col2_2 %><br />
+    <%= f.text_field :col2_2%>
+  </div>
+  <div class="field">
+    <%= f.label :col2_3 %><br />
+    <%= f.text_field :col2_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :col2_4 %><br />
+    <%= f.text_field :col2_4 %>
+  </div>
+    <div class="field">
+    <%= f.label :col3_1 %><br />
+    <%= f.text_field :col3_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :col3_2 %><br />
+    <%= f.text_field :col3_2%>
+  </div>
+  <div class="field">
+    <%= f.label :col3_3 %><br />
+    <%= f.text_field :col3_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :col3_4 %><br />
+    <%= f.text_field :col3_4 %>
+  </div>
+    <div class="field">
+    <%= f.label :col4_1 %><br />
+    <%= f.text_field :col4_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :col4_2 %><br />
+    <%= f.text_field :col4_2%>
+  </div>
+  <div class="field">
+    <%= f.label :col4_3 %><br />
+    <%= f.text_field :col4_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :col4_4 %><br />
+    <%= f.text_field :col4_4 %>
+  </div>
+  <br/><br/>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
