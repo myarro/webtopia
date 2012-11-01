@@ -3,9 +3,32 @@ class Page < ActiveRecord::Base
 	validates	:url, :uniqueness => true
 
 
-	def self.find_page (section1, section2, section3, section4, page_name)
 
-		puts "paging"
+#FIND_SITEMAP
+	def self.find_sitemap (domain_is)
+
+		#what else shoudl be in the sitemap?
+
+		@xml = '<?xml version="1.0" encoding="UTF-8"?>
+			<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+
+		@map = Page.all
+
+		@map.each do |m|
+
+			if m.url[0..2] != "scr"
+				@xml += "<url><loc>http://#{domain_is}/#{m.url}</loc></url>"
+			end
+
+		end
+
+		@xml += "</urlset>"
+
+	end
+
+
+#FIND_PAGE
+	def self.find_page (section1, section2, section3, section4, page_name)
 
 		@page_data = nil
 
@@ -25,10 +48,6 @@ class Page < ActiveRecord::Base
 	    	@page_data = Page.where(:section1 => "help_pages", :page_name => "what_are_you_looking_for").first
 	    end
 
-
-	    puts "page data loaded"
-
-#if the cotent is a pointer to another content collection, deal with it with another method.
 
 	    @col_data_1 = ""
 

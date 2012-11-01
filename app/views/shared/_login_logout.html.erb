@@ -1,0 +1,6 @@
+            <% if session[:user_id] %>
+                <%= "<a href='/logout' class='topLinks'>LOGOUT</a><br/>".html_safe %>
+                <%= get_logged_in_as.html_safe %>
+            <% else %>
+                <%= "<a href='/login' class='topLinks'>LOGIN</a>".html_safe %>
+            <% end %>

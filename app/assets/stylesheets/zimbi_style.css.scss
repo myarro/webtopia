@@ -1,0 +1,230 @@
+@charset "UTF-8";
+
+/* RESET STYLE from Yahoo Developers********* */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+
+
+/* START STYLE */
+
+/* div outline */
+div {
+	outline:#CC0000 solid 0px; 
+	}
+
+/* tag definitions */
+
+h1{
+	font-size:24px;
+	font-family:'Orbitron',arial,serif;
+}
+
+
+/* classes */
+.new_font1{
+	font-family:'Orbitron',arial,serif;
+}
+
+
+
+/* div definitions */
+
+html {
+	height:100%;
+}
+
+body {
+	margin: 0px;
+	height: 100%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#333;	
+	background: url("hex-back2.gif") repeat-x;
+}
+
+#centerDiv {
+	margin:auto;
+	text-align:center;
+	height: 100%;
+	overflow:visible;
+	z-index:1000;
+}
+
+#headerDiv{
+	margin:auto;
+	width:960px;
+	z-index:1000;	
+	background-color:#ED3293;
+}
+
+#headerLeftDiv{
+	width:170px;
+	height:80px;
+	padding:0 0 0 30px;
+	float:left;
+	text-align:left;
+	background: url("zimbi-drinks-logo.png") no-repeat;
+}
+
+#headerRightDiv{
+	width:730px;
+	height:75px;
+	padding:5px 30px 0 0;
+	float:left;
+	text-align:right;
+}
+
+
+#navDiv{
+	margin:auto;
+	width:930px;
+	height:35px;
+	clear:both;
+	padding: 0 0 0 30px;
+	overflow:visible;
+}
+
+
+#mainBackDiv{
+	margin:auto;
+	width:1160px;
+	padding: 0;
+	margin-top: 120px;
+	background: url("main-hex-back.png") repeat-y center;
+	background-position: 85px 0px;
+}
+
+#mainDiv{
+	margin:auto;
+	width:660px;
+	min-height:600px;
+	text-align:left;
+	padding-bottom: 50px;
+	z-index:1001;
+}
+
+#main1Div{
+	margin:auto;
+	width:660px;
+	min-height: 600px;
+	text-align:left;
+	padding-bottom: 50px;
+	z-index:1001;
+}
+
+#main2Div{
+	position: relative;
+	width:100px;
+	height:100px;
+	float:right;
+	top:0px;
+	left:0px;
+	margin-right:100px;
+	padding-bottom: 50px;
+	z-index:1001;
+	background-color: #CCC;
+	}
+
+
+#footerDiv{
+	clear:both;
+	margin:auto;
+	width:990px;
+	height:100%;
+	min-height: 300px;
+	overflow:hidden;
+	padding:20px 0 50px 0;
+	overflow: visible;
+	background: url("footer-hex-back.png") no-repeat;
+}
+
+
+
+.phoneHead{
+	font-size:24px;
+	color:#FFF;
+}
+
+
+.topLinks{
+	color:#FFF;
+}	
+
+
+.font10{
+	font-size:10px;
+}
+
+.fontWhite{
+	color:#FFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

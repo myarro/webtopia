@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
 
 
+  before_filter :authenticate_admin, :only => [:index, :show, :new, :create, :destroy]
+  before_filter :check_session
+#  before_filter :authenticate_user, :only => [:section_sub_page]
 
 
   # GET /pages
@@ -86,20 +89,62 @@ class PagesController < ApplicationController
   end
 
 
-#***********custom methods
+  def test(what)
 
-  def section_sub_page
+    return "#{what} is this"
 
-    puts "sectioning"
+  end
 
-    (@page, @content1, @content2, @content3, @content4) = Page.find_page(params[:section1],params[:section2],params[:section3],params[:section4],params[:page_name])
+
+
+#SITEMAP_PAGE
+  def sitemap_page
+
+    #might want to switch the request.host_with_port to a config db in the db call. Don't know how reliable request.host_with_port is
+
+
+    @sitemap = Page.find_sitemap (request.host_with_port)
+
+    render :xml => @sitemap
+
+  end
+
+
+#LOGIN_page
+  def login_page
 
     respond_to do |format|
-      format.html {render :layout => @page.page_layout}
+      format.html {render :layout => "layout_1"}
     end
 
   end
 
+
+
+#SECTION_SUB_PAGE
+  def section_sub_page
+
+    if (params[:section1] == "scr" && session[:user_id]) || params[:section1] != "scr"
+
+      (@page, @content1, @content2, @content3, @content4) = Page.find_page(params[:section1],params[:section2],params[:section3],params[:section4],params[:page_name])
+      @title = @page.title
+      @description = @page.description
+
+    else
+
+      @page = nil
+
+    end
+
+    if !@page.nil?
+      respond_to do |format|
+       format.html {render :layout => @page.page_layout}
+     end
+   else
+    render :text => "You do not have permission to view the page your have requested. [error :: pc1001]"
+   end
+
+  end
 
 
 end
