@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
 	    	reset_session
 	    	session[:user_id] = user.id
 
+	    	user.logged_in = "true"
+	    	user.last_access = Time.now
 	    	user.last_access_time = Time.now
 			user.save
 
@@ -21,24 +23,20 @@ class ApplicationController < ActionController::Base
 	def check_session
 
 		if session[:user_id]
+
 			user = User.find(session[:user_id])
-
-#			time1 = Time.now.to_i
-#			time2 = user.last_access_time.to_i
-
-
+			time_out = WebsiteSetting.find(1).session_time_out
 
 			time_difference = Time.now.to_i - user.last_access_time.to_i
 
-			if time_difference > 60 #and the user is logged in. Otherwise do nothing. Flag for login needs to be added.
+			if time_difference > (time_out * 60) && user.logged_in == "true" 
 				redirect_to "/logout"
 			end
 
+			user.last_access = Time.now
 			user.last_access_time = Time.now
 			user.save
 
-		else
-			puts "********There is no session"
 		end
 
 	end

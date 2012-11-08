@@ -96,6 +96,25 @@ class PagesController < ApplicationController
   end
 
 
+#*******************___________________Custom
+
+#HOME_PAGE
+  def home_page
+
+    @home = Page.find(WebsiteSetting.find(1).home_page)
+
+    get_page_content(@home.section1,@home.section2,@home.section3,@home.section4,@home.page_name)
+
+    if !@page.nil?
+      respond_to do |format|
+       format.html {render :layout => @page.page_layout, :template => "/pages/section_sub_page"}
+      end
+    else
+      render :text => "You must create and assign your home page in the Website Settings console."
+    end
+
+  end
+
 
 #SITEMAP_PAGE
   def sitemap_page
@@ -110,7 +129,17 @@ class PagesController < ApplicationController
   end
 
 
-#LOGIN_page
+#RSS_PAGE
+  def rss_page
+
+    @rss = Page.find_rss (request.host_with_port)
+
+    render :xml => @rss
+
+  end
+
+
+#LOGIN_PAGE
   def login_page
 
     respond_to do |format|
@@ -120,15 +149,33 @@ class PagesController < ApplicationController
   end
 
 
+#GET_BLOG
+  def get_blog
+
+    @blog = Blog.find(params[:id])
+
+
+    if !@blog.nil?
+      respond_to do |format|
+       format.html {render :layout => "layout_1", :template => "/pages/blog"}
+     end
+   else
+    render :text => "You do not have permission to view the page your have requested. [error :: pc1001]"
+   end
+
+
+  end
+
 
 #SECTION_SUB_PAGE
   def section_sub_page
 
+
+    #check for "mobile" identifier in url and then use a different area that strips content from site.
+
     if (params[:section1] == "scr" && session[:user_id]) || params[:section1] != "scr"
 
-      (@page, @content1, @content2, @content3, @content4) = Page.find_page(params[:section1],params[:section2],params[:section3],params[:section4],params[:page_name])
-      @title = @page.title
-      @description = @page.description
+      get_page_content(params[:section1],params[:section2],params[:section3],params[:section4],params[:page_name])
 
     else
 
@@ -143,6 +190,18 @@ class PagesController < ApplicationController
    else
     render :text => "You do not have permission to view the page your have requested. [error :: pc1001]"
    end
+
+  end
+
+
+#GET_PAGE_CONTENT
+  def get_page_content(section1,section2,section3,section4,page_name)
+
+      (@page, @content1, @content2, @content3, @content4) = Page.find_page(section1,section2,section3,section4,page_name)
+
+      @title = @page.title
+      @description = @page.description
+      @canonical = @page.url
 
   end
 

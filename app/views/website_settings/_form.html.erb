@@ -1,0 +1,25 @@
+<%= form_for(@website_setting) do |f| %>
+  <% if @website_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@website_setting.errors.count, "error") %> prohibited this website_setting from being saved:</h2>
+
+      <ul>
+      <% @website_setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :session_time_out %><br />
+    <%= f.number_field :session_time_out %>
+  </div>
+  <div class="field">
+    <%= f.label :home_page %><br />
+    <%= f.number_field :home_page %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

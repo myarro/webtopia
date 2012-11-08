@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101195126) do
+ActiveRecord::Schema.define(:version => 20121103040400) do
+
+  create_table "blogs", :force => true do |t|
+    t.string   "subject"
+    t.string   "body"
+    t.string   "tags"
+    t.integer  "user_id"
+    t.integer  "blog_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "contents", :force => true do |t|
     t.string   "content"
@@ -49,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20121101195126) do
     t.integer  "col4_2",         :limit => 255
     t.integer  "col4_3",         :limit => 255
     t.integer  "col4_4",         :limit => 255
+    t.string   "canonical_url"
   end
 
   create_table "sessions", :force => true do |t|
@@ -69,6 +80,16 @@ ActiveRecord::Schema.define(:version => 20121101195126) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "last_access_time"
+    t.string   "last_access"
+    t.string   "logged_in"
+    t.integer  "home_page"
+  end
+
+  create_table "website_settings", :force => true do |t|
+    t.integer  "session_time_out"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "home_page"
   end
 
 end

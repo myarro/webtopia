@@ -15,6 +15,8 @@ class SessionsController < ApplicationController
 	end
 
   def destroy
+  		user = User.find(session[:user_id])
+  		user.logged_in = "false"
   		reset_session
   		redirect_to "/login", :notice => "You are logged out"
   	end

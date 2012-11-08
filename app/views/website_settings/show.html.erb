@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Session time out:</b>
+  <%= @website_setting.session_time_out %>
+</p>
+
+
+<%= link_to 'Edit', edit_website_setting_path(@website_setting) %> |
+<%= link_to 'Back', website_settings_path %>

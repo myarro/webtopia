@@ -1,5 +1,9 @@
 Webtopia::Application.routes.draw do
 
+  resources :blogs
+
+  resources :website_settings
+
   resources :users
   resources :contents
   resources :pages
@@ -7,8 +11,13 @@ Webtopia::Application.routes.draw do
   resource :session
 
 
+#default route redirects to default page set in website config
+  root :to => "pages#home_page"
+
+
 #Administrative pages
   get "sitemap.xml" => "pages#sitemap_page"
+  get "rss.xml" => "pages#rss_page"
 
 #Registration and login
   get "register_new_user" => "users#new"
@@ -19,6 +28,8 @@ Webtopia::Application.routes.draw do
 
 
 
+  #find blog
+  get "/blog/:id/:name" => "pages#get_blog"
 
   #dynamic page routing routes
   get "/:page_name" => "pages#section_sub_page"

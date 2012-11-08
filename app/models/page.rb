@@ -1,4 +1,8 @@
+include ActionView::Helpers::SanitizeHelper
+
+
 class Page < ActiveRecord::Base
+
 
 	validates	:url, :uniqueness => true
 
@@ -27,13 +31,123 @@ class Page < ActiveRecord::Base
 	end
 
 
+
+#FIND_RSS
+	def self.find_rss (domain_is)
+
+		@rss = '<?xml version="1.0" encoding="UTF-8"?>
+		<rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
+		<channel>
+		<title>Zimbi Juice Drinks RSS Feed</title>
+		<link>http://www.drinkzimbi.com/</link>
+		<description>RSS feed for Zimbi juice drinks and drinkzimbi.com.</description>
+		<lastBuildDate>Mon, 12 Sep 2005 18:37:00 GMT</lastBuildDate>
+		<language>en-us</language>
+		<copyright>2012-13 Xymbiot, Inc. All rights reserved.</copyright>
+		<atom:link href="http://www.drinkzimbi.com/rss.xml" rel="self" type="application/rss+xml" />'
+
+
+		#join with blogs some how
+		@feed_content = Page.order("updated_at DESC").limit(10)
+
+		feed_count = 0
+
+		@feed_content.each do |fc|
+
+			if fc.section1 != "scr" #&& fc.id is greater than all the default pages
+
+				if fc.col1_1 != 0
+					body = Content.find(fc.col1_1)
+
+					if body.updated_at > (Time.now - 10.days)
+
+						h1_start = body.content.downcase.index('<h1>') + 4
+						h1_end = body.content.downcase.index('</h1>') - 1
+						body_start = h1_end + 6
+						body_end = body_start + 200
+						body_finish = ""
+
+						if body.content.length > body_end
+							body_finish = "..."
+						end
+
+						title = body.content[h1_start .. h1_end]
+						description = strip_tags(body.content[body_start .. body_end])
+
+						@rss += "<item>
+						<title>#{title}</title>"
+						@rss += "<link>#{domain_is}/#{fc.url}</link>"
+						@rss += "<guid>#{domain_is}/#{fc.url}</guid>"
+						@rss += "<pubDate>#{body.updated_at.strftime("%a, %d %b %Y %H:%M:%S GMT")}</pubDate>"
+						@rss += "<description>#{description} #{body_finish}</description>"
+						@rss += "</item>"
+
+					end
+
+				end
+
+			end
+
+			feed_count = feed_count + 1
+
+			if feed_count > 10
+				break
+			end
+
+		end
+
+
+		@feed_blog = Blog.order("updated_at DESC").limit(10)
+
+		feed_count = 0
+
+		@feed_blog.each do |fb|
+
+			if fb.updated_at > (Time.now - 10.days)
+
+				body_end = 200
+				body_finish = ""
+
+				if fb.body.length > body_end
+					body_finish = "..."
+				end
+
+				title = strip_tags(fb.subject)
+				url = title.gsub(" ", "_").downcase
+				url = url.gsub(".","")
+				description = strip_tags(fb.body[0 .. body_end])
+
+				@rss += "<item>
+				<title>#{title}</title>"
+				@rss += "<link>#{domain_is}/blog/#{fb.id}/#{url}</link>"
+				@rss += "<guid>#{domain_is}/blog/#{fb.id}/#{url}</guid>"
+				@rss += "<pubDate>#{fb.updated_at.strftime("%a, %d %b %Y %H:%M:%S GMT")}</pubDate>"
+				@rss += "<description>#{description} #{body_finish}</description>"
+				@rss += "</item>"
+
+			end
+
+			feed_count = feed_count + 1
+
+			if feed_count > 10
+				break
+			end
+
+		end
+
+		@rss += "</channel>
+		</rss>"
+
+	end
+
+
 #FIND_PAGE
 	def self.find_page (section1, section2, section3, section4, page_name)
 
 		@page_data = nil
 
 	    if !section4.nil?
-	      @page_data = Page.where(:section1 => section1, :section2 => section2, :section3 => params[section3], :section4 => section4, :page_name => page_name).first
+	      @page_data = Page.where(:section1 => section1, :section2 => section2, :section3 => section3, :section4 => section4, :page_name => page_name).first
 	    elsif !section3.nil?
 	      @page_data = Page.where(:section1 => section1, :section2 => section2, :section3 => section3, :page_name => page_name).first
 	    elsif !section2.nil?
@@ -53,13 +167,26 @@ class Page < ActiveRecord::Base
 
 		(1..4).each do |i|
 
+
 			content_is = @page_data.send("col1_#{i}")
 
-
-			puts "content_is #{i} is #{content_is} and #{@page_data.send("col1_#{i}")}"
-
 			if !content_is.nil? && content_is != 0
-				@col_data_1 += Content.find(content_is).content
+
+				if content_is < 0
+
+					Blog.order("updated_at DESC").limit(content_is.abs).each do |b|
+
+						@col_data_1 += "<hr><br/>"
+						@col_data_1 += "<h2>subject : #{b.subject}</h2>"
+						@col_data_1 += "author : #{b.user_id}<br/>"
+						@col_data_1 += "body : #{b.body}<br/><br/>"
+						@col_data_1 += "tags : #{b.tags}<br/><br/>"
+
+					end
+
+				else
+					@col_data_1 += Content.find(content_is).content
+				end
 			else
 				break
 			end
@@ -111,6 +238,8 @@ class Page < ActiveRecord::Base
 
 		end
 
+
+		#create and rss feed of latest articles, blog posts, news, etc.
 
 
 	    return @page_data, @col_data_1, @col_data_2, @col_data_3, @col_data_4

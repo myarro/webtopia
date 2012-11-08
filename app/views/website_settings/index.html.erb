@@ -1,0 +1,25 @@
+<h1>Listing website_settings</h1>
+
+<table>
+  <tr>
+    <th>Session time out</th>
+    <th>Home Page</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @website_settings.each do |website_setting| %>
+  <tr>
+    <td><%= website_setting.session_time_out %></td>
+    <td><%= website_setting.home_page %></td>
+    <td><%= link_to 'Show', website_setting %></td>
+    <td><%= link_to 'Edit', edit_website_setting_path(website_setting) %></td>
+    <td><%= link_to 'Destroy', website_setting, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Website setting', new_website_setting_path %>

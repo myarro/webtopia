@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%= get_title_helper.html_safe %>
-	<%= get_description_helper.html_safe %>
+	<%= get_title_helper %>
+	<%= get_description_helper %>
+	<%= get_canonical_helper %>
 
 
 
@@ -21,7 +22,7 @@
 
 		<div id="headerDiv">
 			<div id="headerLeftDiv"></div><!--end headerLeftDiv-->
-			<div id="headerRightDiv"><span class="phoneHead">1-801-995-4350</span><br/><a href="#" class="topLinks">ABOUT US</a> | <a href="#" class="topLinks">CONTACT INFO</a> | <%= render "/shared/login_logout" %>                
+			<div id="headerRightDiv"><span class="phoneHead">1-801-995-4350</span><br/><a href="#" class="topLinks">CONTACT INFO</a> | <%= render "/shared/login_logout" %>                
 
 
 			</div><!--end headerRightDiv-->
