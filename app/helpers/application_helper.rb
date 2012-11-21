@@ -57,6 +57,18 @@ module ApplicationHelper
 	end
 
 
+	def get_admin_is_helper
+
+		user = User.find(session[:user_id])
+
+		if user.permission == "super_admin"
+			"true"
+		else
+			"false"
+		end
+
+	end
+
 
 
 end

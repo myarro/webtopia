@@ -1,0 +1,35 @@
+<h1>Listing lists</h1>
+
+<table width="600" cellspacing="0" cellpadding="0" border="1">
+  <tr>
+    <th>Title</th>
+    <th>Url</th>
+    <th>List Name</th>
+    <th>Topic 1</th>
+    <th>Topic 2</th>
+    <th>Topic 3</th>
+    <th>Topic 4</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lists.each do |list| %>
+  <tr>
+    <td><%= list.title %></td>
+    <td><%= list.url %></td>
+    <td><%= list.list_name %></td>
+    <td><%= list.topic_1 %></td>
+    <td><%= list.topic_2 %></td>
+    <td><%= list.topic_3 %></td>
+    <td><%= list.topic_4 %></td>
+    <td><%= link_to 'Show', list %></td>
+    <td><%= link_to 'Edit', edit_list_path(list) %></td>
+    <td><%= link_to 'Destroy', list, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New List', new_list_path %>

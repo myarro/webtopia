@@ -203,6 +203,10 @@ class PagesController < ApplicationController
       @description = @page.description
       @canonical = @page.url
 
+      puts "***********controller says is adminc #{@is_admin}"
+
+
+
   end
 
 

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @list.title %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @list.url %>
+</p>
+
+<p>
+  <b>List Name:</b>
+  <%= @list.list_name %>
+</p>
+
+<p>
+  <b>Topic 1:</b>
+  <%= @list.topic_1 %>
+</p>
+
+<p>
+  <b>Topic 2:</b>
+  <%= @list.topic_2 %>
+</p>
+
+<p>
+  <b>Topic 3:</b>
+  <%= @list.topic_3 %>
+</p>
+
+<p>
+  <b>Topic 4:</b>
+  <%= @list.topic_4 %>
+</p>
+
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>

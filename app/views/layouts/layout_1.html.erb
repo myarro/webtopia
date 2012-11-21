@@ -22,7 +22,7 @@
 
 		<div id="headerDiv">
 			<div id="headerLeftDiv"></div><!--end headerLeftDiv-->
-			<div id="headerRightDiv"><span class="phoneHead">1-801-995-4350</span><br/><a href="#" class="topLinks">CONTACT INFO</a> | <%= render "/shared/login_logout" %>                
+			<div id="headerRightDiv"><span class="phoneHead">1-801-995-4350</span><br/><a href="/about_us/contact_information" class="topLinks">CONTACT INFO</a> | <%= render "/shared/login_logout" %>                
 
 
 			</div><!--end headerRightDiv-->
@@ -33,14 +33,19 @@
 		</div><!--end navDiv-->
 
 		<div id="mainBackDiv">
-			<div id="mainDiv">
 
+			<div id="bannerDiv">
+					<!--div id="breadcrumbDiv"><b>YOU ARE HERE : </b><%= "#{request.fullpath}" %></div-->
+					<%= image_tag ("hex-banner-sample2.png") %>
+			</div><!--end bannerDiv-->
+
+			<div id="mainDiv">
 
 				<%= yield %>
 
 			</div><!--end mainDiv-->
 		<div id="footerDiv">
-			footer
+			<%= render "shared/zimbi_footer" %>
 		</div><!--end footerDiv-->
 		</div><!--end mainBackDiv-->
 

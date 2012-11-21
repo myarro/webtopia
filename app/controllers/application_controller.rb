@@ -3,7 +3,10 @@ class ApplicationController < ActionController::Base
 
 
 
+#CREATE_SESSION
   	def create_session(email,password)
+
+  		email = email.downcase
 
 	    if user = User.authenticate(email,password)
 
@@ -20,6 +23,7 @@ class ApplicationController < ActionController::Base
 	end
 
 
+#CHECK_SESSION
 	def check_session
 
 		if session[:user_id]
@@ -41,7 +45,9 @@ class ApplicationController < ActionController::Base
 
 	end
 
-  
+
+
+#AUTHENTICATE_USER  
   	def authenticate_user
 
 		if session[:user_id]
@@ -54,15 +60,15 @@ class ApplicationController < ActionController::Base
 
 
 
+#AUTHENTICATE_ADMIN
   	def authenticate_admin
 
   		if !session[:user_id].nil?
 
-
 	  		user = User.find(session[:user_id])
 
 	  		if user.permission == "super_admin"
-				#do nothing			
+				#do nothing	
 			else
 				render :text => "You do not have permission to view the page your have requested. [error :: apc1002]"
 			end

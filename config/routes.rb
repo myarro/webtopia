@@ -1,5 +1,7 @@
 Webtopia::Application.routes.draw do
 
+  resources :lists
+
   resources :blogs
 
   resources :website_settings

@@ -1,0 +1,45 @@
+<%= form_for(@list) do |f| %>
+  <% if @list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+      <ul>
+      <% @list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :list_name %><br />
+    <%= f.text_field :list_name %>
+  </div>
+  <div class="field">
+    <%= f.label :topic_1 %><br />
+    <%= f.text_field :topic_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :topic_2 %><br />
+    <%= f.text_field :topic_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :topic_3 %><br />
+    <%= f.text_field :topic_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :topic_4 %><br />
+    <%= f.text_field :topic_4 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

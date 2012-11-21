@@ -1,4 +1,7 @@
             <% if session[:user_id] %>
+            	<% if get_admin_is_helper %>
+            		<a href="/admin" class="topLinks">ADMIN</a> | 
+            	<% end %>
                 <%= "<a href='/logout' class='topLinks'>LOGOUT</a><br/>".html_safe %>
                 <%= get_logged_in_as_helper.html_safe %>
             <% else %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121103040400) do
+ActiveRecord::Schema.define(:version => 20121120232526) do
 
   create_table "blogs", :force => true do |t|
     t.string   "subject"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(:version => 20121103040400) do
     t.datetime "updated_at"
   end
 
+  create_table "lists", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "topic_1"
+    t.string   "topic_2"
+    t.string   "topic_3"
+    t.string   "topic_4"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "list_name"
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "description"
@@ -43,22 +55,22 @@ ActiveRecord::Schema.define(:version => 20121103040400) do
     t.string   "url"
     t.string   "header_special"
     t.integer  "col_layout"
-    t.integer  "col1_1",         :limit => 255
-    t.integer  "col1_2",         :limit => 255
-    t.integer  "col1_3",         :limit => 255
-    t.integer  "col1_4",         :limit => 255
-    t.integer  "col2_1",         :limit => 255
-    t.integer  "col2_2",         :limit => 255
-    t.integer  "col2_3",         :limit => 255
-    t.integer  "col2_4",         :limit => 255
-    t.integer  "col3_1",         :limit => 255
-    t.integer  "col3_2",         :limit => 255
-    t.integer  "col3_3",         :limit => 255
-    t.integer  "col3_4",         :limit => 255
-    t.integer  "col4_1",         :limit => 255
-    t.integer  "col4_2",         :limit => 255
-    t.integer  "col4_3",         :limit => 255
-    t.integer  "col4_4",         :limit => 255
+    t.string   "col1_1"
+    t.string   "col1_2"
+    t.string   "col1_3"
+    t.string   "col1_4"
+    t.string   "col2_1"
+    t.string   "col2_2"
+    t.string   "col2_3"
+    t.string   "col2_4"
+    t.string   "col3_1"
+    t.string   "col3_2"
+    t.string   "col3_3"
+    t.string   "col3_4"
+    t.string   "col4_1"
+    t.string   "col4_2"
+    t.string   "col4_3"
+    t.string   "col4_4"
     t.string   "canonical_url"
   end
 

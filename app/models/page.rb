@@ -170,22 +170,28 @@ class Page < ActiveRecord::Base
 
 			content_is = @page_data.send("col1_#{i}")
 
-			if !content_is.nil? && content_is != 0
+			if !content_is.nil? && content_is != ""
 
-				if content_is < 0
+				if content_is[0..8] == "blog_feed"
 
-					Blog.order("updated_at DESC").limit(content_is.abs).each do |b|
+					blog_limit = content_is[10..20].to_i
+
+					Blog.order("updated_at DESC").limit(blog_limit).each do |b|
+
+						url_subject = b.subject.gsub(" ","_")
+						url_subject = url_subject.gsub(/\W/, "").downcase
+
 
 						@col_data_1 += "<hr><br/>"
-						@col_data_1 += "<h2>subject : #{b.subject}</h2>"
+						@col_data_1 += "<a href='/blog/#{b.id}/#{url_subject}'><h2>#{b.subject}</h2></a>"
 						@col_data_1 += "author : #{b.user_id}<br/>"
 						@col_data_1 += "body : #{b.body}<br/><br/>"
 						@col_data_1 += "tags : #{b.tags}<br/><br/>"
 
 					end
-
 				else
-					@col_data_1 += Content.find(content_is).content
+					page_content = content_is[8..18].to_i
+					@col_data_1 += Content.find(page_content).content
 				end
 			else
 				break
@@ -200,8 +206,9 @@ class Page < ActiveRecord::Base
 
 			content_is = @page_data.send("col2_#{i}")
 
-			if !content_is.nil? && content_is != 0
-				@col_data_2 += Content.find(content_is).content
+			if !content_is.nil? && content_is != ""
+				page_content = content_is[8..18].to_i
+				@col_data_2 += Content.find(page_content).content
 			else
 				break
 			end
@@ -215,8 +222,9 @@ class Page < ActiveRecord::Base
 
 			content_is = @page_data.send("col3_#{i}")
 
-			if !content_is.nil? && content_is != 0
-				@col_data_3 += Content.find(content_is).content
+			if !content_is.nil? && content_is != ""
+				page_content = content_is[8..18].to_i				
+				@col_data_3 += Content.find(page_content).content
 			else
 				break
 			end
@@ -230,8 +238,9 @@ class Page < ActiveRecord::Base
 
 			content_is = @page_data.send("col4_#{i}")
 
-			if !content_is.nil? && content_is != 0
-				@col_data_4 += Content.find(content_is).content
+			if !content_is.nil? && content_is != ""
+				page_content = content_is[8..18].to_i
+				@col_data_4 += Content.find(page_content).content
 			else
 				break
 			end

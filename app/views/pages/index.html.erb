@@ -1,7 +1,8 @@
 <h1>Listing pages</h1>
 
-<table>
+<table width="600" cellspacing="0" cellpadding="0" border="1">
   <tr>
+    <th>ID</th>
     <th>URL</th>
     <th>Title</th>
     <th>Description</th>
@@ -12,6 +13,7 @@
 
 <% @pages.each do |page| %>
   <tr>
+    <td><%= page.id %></td>
     <td><%= page.url %></td>
     <td><%= page.title %></td>
     <td><%= page.description %></td>
