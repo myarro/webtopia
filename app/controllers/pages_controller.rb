@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
 
-  before_filter :authenticate_admin, :only => [:index, :show, :new, :create, :destroy]
+  before_filter :authenticate_admin, :only => [:index, :show, :new, :create, :destroy, :get_admin]
   before_filter :check_session
 #  before_filter :authenticate_user, :only => [:section_sub_page]
 
@@ -144,6 +144,15 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       format.html {render :layout => "layout_1"}
+    end
+
+  end
+
+#GET_ADMIN
+  def get_admin
+
+    respond_to do |format|
+      format.html {render :layout => "layout_1", :template => "/pages/admin"}
     end
 
   end

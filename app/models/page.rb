@@ -172,7 +172,40 @@ class Page < ActiveRecord::Base
 
 			if !content_is.nil? && content_is != ""
 
-				if content_is[0..8] == "blog_feed"
+				puts "**********checking content #{content_is[0..4]}"
+
+				if content_is[0..10] == "list_topic_"
+					list_name = content_is[11..100]
+
+					list = List.where(["topic_1 like ? OR topic_2 like ? or topic_3 like ?", "%#{list_name}%", "%#{list_name}%", "%#{list_name}%"])
+
+
+						@col_data_1 += "<hr><br/>"
+						@col_data_1 += "<h2>Topic List: #{list_name.upcase}</h2>"
+
+					list.each do |l|
+						@col_data_1 += "<br/>"
+						@col_data_1 += "<a href='#{l.url}'>#{l.title}</a>"
+					end
+
+					@col_data_1 += "<br/><br/>"
+					
+				elsif content_is[0..4] == "list_"
+					list_name = content_is[5..100]
+
+					list = List.where(:list_name => list_name)
+
+					@col_data_1 += "<hr><br/>"
+					@col_data_1 += "<h2>List: #{list_name.upcase}</h2>"
+
+					list.each do |l|
+						@col_data_1 += "<br/>"
+						@col_data_1 += "<a href='#{l.url}'>#{l.title}</a>"
+					end
+
+					@col_data_1 += "<br/><br/>"
+
+				elsif content_is[0..8] == "blog_feed"
 
 					blog_limit = content_is[10..20].to_i
 

@@ -17,7 +17,7 @@ Webtopia::Application.routes.draw do
   root :to => "pages#home_page"
 
 
-#Administrative pages
+#Feeds etc. pages
   get "sitemap.xml" => "pages#sitemap_page"
   get "rss.xml" => "pages#rss_page"
 
@@ -27,13 +27,13 @@ Webtopia::Application.routes.draw do
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
 
+#Admin Page
+  get "admin" => "pages#get_admin"
 
-
-
-  #find blog
+#find blog
   get "/blog/:id/:name" => "pages#get_blog"
 
-  #dynamic page routing routes
+#dynamic page routing routes
   get "/:page_name" => "pages#section_sub_page"
   get "/:section1/:page_name" => "pages#section_sub_page"
   get "/:section1/:section2/:page_name" => "pages#section_sub_page"

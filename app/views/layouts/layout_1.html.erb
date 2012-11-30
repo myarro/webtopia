@@ -30,6 +30,11 @@
 
 		<div id="navDiv">
 			<%= render "shared/zimbi_nav_1" %>
+			<% if !session[:user_id].nil? %>
+				<% if get_admin_is_helper %>
+				<%= render "shared/zimbi_nav_2" %>
+				<% end %>
+			<% end %>
 		</div><!--end navDiv-->
 
 		<div id="mainBackDiv">
