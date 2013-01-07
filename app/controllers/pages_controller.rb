@@ -204,17 +204,14 @@ class PagesController < ApplicationController
 
 
 #GET_PAGE_CONTENT
-  def get_page_content(section1,section2,section3,section4,page_name)
+  def get_page_content(section1,section2,section3,section4,page_name) 
 
       (@page, @content1, @content2, @content3, @content4) = Page.find_page(section1,section2,section3,section4,page_name)
 
       @title = @page.title
       @description = @page.description
       @canonical = @page.url
-
-      puts "***********controller says is adminc #{@is_admin}"
-
-
+      @banner = @page.main_banner
 
   end
 

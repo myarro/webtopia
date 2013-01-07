@@ -13,9 +13,11 @@ Webtopia::Application.routes.draw do
   resource :session
 
 
+
+
+
 #default route redirects to default page set in website config
   root :to => "pages#home_page"
-
 
 #Feeds etc. pages
   get "sitemap.xml" => "pages#sitemap_page"

@@ -1,6 +1,5 @@
 include ActionView::Helpers::SanitizeHelper
 
-
 class Page < ActiveRecord::Base
 
 
@@ -57,9 +56,13 @@ class Page < ActiveRecord::Base
 			if fc.section1 != "scr" #&& fc.id is greater than all the default pages
 
 				if fc.col1_1 != 0
-					body = Content.find(fc.col1_1)
 
-					if body.updated_at > (Time.now - 10.days)
+					end_string = fc.col1_1.index('_') + 1
+					col_data = fc.col1_1[end_string..50].to_i
+
+					body = Content.find(col_data)
+
+					if body.updated_at > (Time.now - 30.days)
 
 						h1_start = body.content.downcase.index('<h1>') + 4
 						h1_end = body.content.downcase.index('</h1>') - 1

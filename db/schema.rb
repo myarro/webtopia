@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120232526) do
+ActiveRecord::Schema.define(:version => 20130107210827) do
 
   create_table "blogs", :force => true do |t|
     t.string   "subject"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(:version => 20121120232526) do
     t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.string   "content_type"
+    t.string   "subject"
+    t.string   "topics"
+    t.integer  "user_id"
+    t.integer  "popularity"
   end
 
   create_table "lists", :force => true do |t|
@@ -72,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20121120232526) do
     t.string   "col4_3"
     t.string   "col4_4"
     t.string   "canonical_url"
+    t.string   "main_banner"
   end
 
   create_table "sessions", :force => true do |t|

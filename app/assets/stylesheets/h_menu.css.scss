@@ -46,23 +46,30 @@
 }
 
 #main_menu > li > a {
-    color: #fff;
+    color: #000;
 /*    font-weight: bold; */
 }
 #main_menu > li:hover > a {
-/*    background: #FF243F; */
-    color: #000;
+    background: #b1ed32; 
+    color: #fff;
+    opacity:.7;
+    filter:alpha(opacity=70);
+    filter: “alpha(opacity=70)”;
 }
  
 /* Submenu
 ------------------------------------------*/
 #main_menu ul {
-    background: #ed3293;
+    background: #c2ff59;
+    opacity:.95;
+    filter:alpha(opacity=95);
+    filter: “alpha(opacity=95)”;
+
 }
 #main_menu ul li a {
-    color: #FFF;
-	border-top: 1px solid #ff59a7; 
+    color: #000;
+	border-top: 1px solid #e2ffb0; 
 }
 #main_menu ul li:hover a {
-    background: #ff59a7;
+    background: #e2ffb0;
 }

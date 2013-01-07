@@ -1,10 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Content:</b>
-  <%= @content.content %>
-</p>
+<br/><br/>
+  <h1>Content:</h1>
+<br/><br/>Subject (ID) :  ( <%= @content.id %> ) <%= @content.subject %><br/>
+ 	Author ID: <%= @content.user_id %> <br/>
+	Topics: <%= @content.topics %><br/>
+	Popularity: <%= @content.popularity %><br/>
+	Content Type: <%= @content.content_type %><br/>
+	Description: <%= @content.description %><br/><br/>
+
+<%= link_to 'Edit', edit_content_path(@content) %> | <%= link_to 'Back', contents_path %><br/><br/>
+
+  <textarea cols="60" rows="30"><%= @content.content %></textarea>
 
 
-<%= link_to 'Edit', edit_content_path(@content) %> |
-<%= link_to 'Back', contents_path %>

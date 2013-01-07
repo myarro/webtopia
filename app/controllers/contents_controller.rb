@@ -2,13 +2,15 @@ class ContentsController < ApplicationController
 
   before_filter :authenticate_admin
 
+#  attr_accessible :content_type, :description, :content
+
   # GET /contents
   # GET /contents.json
   def index
     @contents = Content.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render :layout => "layout_1"}
       format.json { render json: @contents }
     end
   end
@@ -19,7 +21,7 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {render :layout => "layout_1"}
       format.json { render json: @content }
     end
   end
@@ -45,6 +47,8 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(params[:content])
 
+    @content.user_id = session[:user_id]
+
     respond_to do |format|
       if @content.save
         format.html { redirect_to @content, notice: 'Content was successfully created.' }
@@ -60,6 +64,8 @@ class ContentsController < ApplicationController
   # PUT /contents/1.json
   def update
     @content = Content.find(params[:id])
+
+    @content.user_id = session[:user_id]
 
     respond_to do |format|
       if @content.update_attributes(params[:content])
