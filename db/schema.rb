@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107210827) do
+ActiveRecord::Schema.define(:version => 20130107222708) do
 
   create_table "blogs", :force => true do |t|
     t.string   "subject"
@@ -79,6 +79,21 @@ ActiveRecord::Schema.define(:version => 20130107210827) do
     t.string   "col4_4"
     t.string   "canonical_url"
     t.string   "main_banner"
+    t.string   "html_file"
+    t.string   "head_file"
+    t.string   "layout_file"
+    t.string   "body_1"
+    t.string   "body_2"
+    t.string   "body_3"
+    t.string   "body_4"
+    t.string   "body_5"
+    t.string   "body_6"
+    t.string   "body_7"
+    t.string   "body_8"
+    t.string   "body_9"
+    t.string   "body_10"
+    t.string   "footer_file"
+    t.string   "end_of_page_file"
   end
 
   create_table "sessions", :force => true do |t|

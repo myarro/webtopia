@@ -1,4 +1,11 @@
-<h1>Listing pages</h1>
+<h1>Pages</h1>
+<br/><br/>
+<b>Rules :</b>
+<br/>
+Password Required Pages: Set section_1 as "scr"
+<br/><br/>
+<%= link_to 'New Page', new_page_path %>
+<br/><br/>
 
 <table width="600" cellspacing="0" cellpadding="0" border="1">
   <tr>
@@ -7,19 +14,15 @@
     <th>Title</th>
     <th>Description</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @pages.each do |page| %>
   <tr>
-    <td><%= page.id %></td>
-    <td><%= page.url %></td>
-    <td><%= page.title %></td>
-    <td><%= page.description %></td>
-    <td><%= link_to 'Show', page %></td>
-    <td><%= link_to 'Edit', edit_page_path(page) %></td>
-    <td><%= link_to 'Destroy', page, confirm: 'Are you sure?', method: :delete %></td>
+    <td class="table_space"><%= page.id %></td>
+    <td class="table_space"><%= page.url %></td>
+    <td class="table_space"><%= page.title %></td>
+    <td class="table_space"><%= page.description %></td>
+    <td class="table_space"><%= link_to 'Show', page %> | <%= link_to 'Edit', edit_page_path(page) %> | <%= link_to 'Destroy', page, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

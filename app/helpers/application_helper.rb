@@ -54,18 +54,6 @@ module ApplicationHelper
 	end
 
 
-#GET_END_OF_PAGE_HELPER
-	def get_end_of_page_helper
-
-		@end_of_page_helper = ""
-
-		#this needs to grab up to 4 or 5 different end of page elements and string them together--or do we make it a single source. Or can content be a aggregation of multiple contents?
-
-		@end_of_page_helper = "<!-- nothing -->".html_safe
-
-
-	end
-
 
 
 	def get_logged_in_as_helper

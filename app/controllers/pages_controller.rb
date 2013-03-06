@@ -12,7 +12,7 @@ class PagesController < ApplicationController
     @pages = Page.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render :layout => "layout_1"}
       format.json { render json: @pages }
     end
   end
@@ -194,7 +194,7 @@ class PagesController < ApplicationController
 
     if !@page.nil?
       respond_to do |format|
-       format.html {render :layout => @page.page_layout}
+       format.html {render :layout => @page.html_file}
      end
    else
     render :text => "You do not have permission to view the page your have requested. [error :: pc1001]"
@@ -203,15 +203,20 @@ class PagesController < ApplicationController
   end
 
 
+
+
 #GET_PAGE_CONTENT
   def get_page_content(section1,section2,section3,section4,page_name) 
 
-      (@page, @content1, @content2, @content3, @content4) = Page.find_page(section1,section2,section3,section4,page_name)
+      (@page, @content1, @content2, @content3, @content4, @header, @body_1, @footer, @end_of_page) = Page.find_page(section1,section2,section3,section4,page_name)
 
       @title = @page.title
       @description = @page.description
       @canonical = @page.url
+
       @banner = @page.main_banner
+
+      puts "page name is @page.html_file #{@page.html_file}"
 
   end
 

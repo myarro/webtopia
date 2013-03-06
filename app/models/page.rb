@@ -166,6 +166,53 @@ class Page < ActiveRecord::Base
 	    end
 
 
+
+	    if !@page_data.head_file.nil?
+		    @header_data = ""
+		    head_start = @page_data.head_file.index("_") + 1
+		    header_files = @page_data.head_file[head_start..-1].split(",") 
+
+		    header_files.each do |h|
+		    	@header_data += Content.find(h).content + "\n"
+		    end
+		end
+
+
+	    if !@page_data.body_1.nil?
+		    @body_1_data = ""
+		    body_1_start = @page_data.body_1.index("_") + 1
+		    body_1_files = @page_data.body_1[body_1_start..-1].split(",") 
+		    
+		    body_1_files.each do |b1|
+		    	@body_1_data += Content.find(b1).content + "\n"
+		    end
+		end
+
+
+	    if !@page_data.footer_file.nil?
+		    @footer_data = ""
+		    footer_start = @page_data.footer_file.index("_") + 1
+		    footer_files = @page_data.footer_file[footer_start..-1].split(",") 
+
+		    footer_files.each do |f|
+		    	@footer_data += Content.find(f).content + "\n"
+		    end
+		end
+
+
+	    if !@page_data.end_of_page_file.nil?
+		    @end_of_page_data = ""
+		    end_of_page_start = @page_data.end_of_page_file.index("_") + 1
+		    end_of_page_files = @page_data.end_of_page_file[end_of_page_start..-1].split(",") 
+
+		    end_of_page_files.each do |e|
+		    	@end_of_page_data += Content.find(e).content + "\n"
+		    end
+		end
+
+
+
+
 	    @col_data_1 = ""
 
 		(1..4).each do |i|
@@ -287,7 +334,7 @@ class Page < ActiveRecord::Base
 		#create and rss feed of latest articles, blog posts, news, etc.
 
 
-	    return @page_data, @col_data_1, @col_data_2, @col_data_3, @col_data_4
+	    return @page_data, @col_data_1, @col_data_2, @col_data_3, @col_data_4, @header_data, @body_1_data, @footer_data, @end_of_page_data
 
 
 	end

@@ -70,7 +70,8 @@ body {
 	margin: 0px;
 	height: 100%;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
-	font-size:11px;
+	font-size:12px;
+	line-height:18px;
 	color:#333;	
 	background: url("hex-back3.gif") repeat-x;
 }
@@ -121,11 +122,11 @@ body {
 
 #mainBackDiv{
 	margin:auto;
-	width:1160px;
+	width:982px;
 	padding: 0;
 	margin-top: 40px;
 	background: url("main-hex-back.png") repeat-y center;
-	background-position: 85px 0px;
+	background-position: 0px 0px;
 }
 
 #bannerDiv{
@@ -148,7 +149,7 @@ body {
 	width:660px;
 	min-height:650px;
 	text-align:left;
-	padding-bottom: 50px;
+	padding: 50px 0 50px 0;
 	z-index:1001;
 }
 
