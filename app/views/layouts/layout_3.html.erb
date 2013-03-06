@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%= get_title_helper %>
+	<%= get_description_helper %>
+	<%= get_canonical_helper %>
+
+
+
+  <%= stylesheet_link_tag "zimbi_style" %>
+  <%= stylesheet_link_tag "h_menu" %>
+  <%= stylesheet_link_tag "a_menu" %>
+
+  <%= csrf_meta_tags %>
+
+
+<link  href="http://fonts.googleapis.com/css?family=Orbitron:400,500,700,900" rel="stylesheet" type="text/css" >
+
+
+</head>
+<body>
+
+
+
+	<div id="centerDiv">
+
+		<div id="headerDiv">
+			<div id="headerLeftDiv"></div><!--end headerLeftDiv-->
+			<div id="headerRightDiv"><span class="phoneHead">1-801-995-4350</span><br/><a href="/about_us/contact_information" class="topLinks">CONTACT INFO</a> | <%= render "/shared/login_logout" %>                
+
+
+			</div><!--end headerRightDiv-->
+		</div><!--end headerDiv -->
+
+		<div id="navDiv">
+			<%= render "shared/zimbi_nav_1" %>
+			<%= render "shared/admin_nav" %>
+		</div><!--end navDiv-->
+
+		<div id="mainBackDiv">
+
+			<div id="bannerDiv">
+					<!--div id="breadcrumbDiv"><b>YOU ARE HERE : </b><%= "#{request.fullpath}" %></div-->
+
+					<%= get_banner_helper %>
+
+			</div><!--end bannerDiv-->
+
+			<div id="mainDiv">
+
+				<%= yield %>
+
+			</div><!--end mainDiv-->
+		<div id="footerDiv">
+			<%= render "shared/zimbi_footer" %>
+		</div><!--end footerDiv-->
+		</div><!--end mainBackDiv-->
+
+
+
+
+	</div><!--end centerDiv-->	
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<%= javascript_include_tag "menu_animation" %>
+
+
+
+
+
+</body>
+</html>

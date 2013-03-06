@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en-US">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="robots" content="index, follow" />
+
+	<title><%= @title %></title>
+	<meta name="description" content="<%= @description %>" />
+	<%= get_canonical_helper %>
+
+
+	<%= csrf_meta_tags %>
+
+  	<%= @header.html_safe %>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+	<link rel="stylesheet" type="text/css"  media="screen" href="/assets/default-style.css" /><!--smallest design-->
+	<link rel="stylesheet" type="text/css"  media="screen and (min-width:320px)" href="/assets/phone-320-style.css" />
+	<link rel="stylesheet" type="text/css"  media="screen and (min-width:480px)" href="/assets/phone-480-style.css" />
+	<link rel="stylesheet" type="text/css"  media="screen and (min-width:600px)" href="/assets/tablet-676-style.css" />
+	<link rel="stylesheet" type="text/css"  media="screen and (min-width:960px)" href="/assets/desktop-1600-style.css" />
+
+
+
+</head>
+<body>
+	
+	<div id="centerDiv">
+
+
+		<div id="mainBackDiv">
+		</div><!--end mainBackDiv-->
+
+
+
+			<div id="testCSSDiv">
+				<h1>This is a headline</h1>
+				<span class="body_copy">This is also a test of the copy.</span>
+			</div>
+			<br/><br/>
+			<%= image_tag ("test-tree.jpg") %>
+
+
+	</div><!--end centerDiv-->
+
+	<%= @end_of_page.html_safe %>
+</body>
+</html>

@@ -1,0 +1,68 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+
+#admin_menu, #admin_menu ul {
+    list-style: none;
+}
+#admin_menu {
+    float: left;
+}
+#admin_menu > li {
+    float: left;
+    font-weight:bold;
+    font-size:12px;
+	font-family:'Orbitron',arial,serif;
+	letter-spacing:1px;
+
+/*	border-right: 1px solid #BA2025; */
+}
+#admin_menu li a {
+	display: block;
+    height: 25px;
+    line-height: 25px;
+    padding: 5px 25px;
+    text-decoration: none;
+}
+#admin_menu ul {
+    position: absolute;
+    display: none;
+	z-index: 999;
+}
+#admin_menu ul li a {
+    width: 200px;
+}
+#admin_menu li:hover ul.noJS {
+    display: block;
+}
+
+/* admin menu
+------------------------------------------*/
+#admin_menu {
+	font-family: 'Exo', sans-serif;
+	font-size:10px;
+/*    background: #E20A1A; */
+}
+
+#admin_menu > li > a {
+    color: #000;
+/*    font-weight: bold; */
+}
+#admin_menu > li:hover > a {
+    background: #ff59a7; 
+    color: #fff;
+}
+ 
+/* Submenu
+------------------------------------------*/
+#admin_menu ul {
+    background: #ed3293;
+}
+#admin_menu ul li a {
+    color: #FFF;
+	border-top: 1px solid #ff59a7; 
+}
+#admin_menu ul li:hover a {
+    background: #000;
+}
